@@ -27,6 +27,8 @@ import 'storage/prefs_manager.dart';
 import 'theme/mesh_theme.dart';
 import 'utils/app_logger.dart';
 
+import 'pos_observer/main.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -99,6 +101,8 @@ void main() async {
   // Load persisted channel messages
   await connector.loadAllChannelMessages();
   await connector.loadUnreadState();
+
+  positionListener(connector);
 
   runApp(
     MeshCoreApp(
